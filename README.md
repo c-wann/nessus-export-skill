@@ -57,7 +57,7 @@ pip3 install selenium openpyxl webdriver-manager
 ### Via Copilot CLI (with skill installed)
 
 Just ask naturally:
-> *"Export Nessus scan 19 host 2 for GETS_PRD_168"*  
+> *"Export Nessus scan 19 host 2"*  
 > *"Export vulnerabilities from https://127.0.0.1:8834/#/scans/reports/19/hosts/2/vulnerabilities"*
 
 ### Direct command line

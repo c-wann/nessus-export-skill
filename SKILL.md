@@ -148,6 +148,34 @@ Each run produces two files in `OUTPUT_DIR`:
 | 0 rows scraped | Check SCAN_ID and HOST_ID match the URL |
 | Certificate error | Already handled with `--ignore-certificate-errors` |
 
+## HTML Reports
+
+In addition to Excel + .nessus export, you can generate standalone HTML reports:
+
+```bash
+python3 ~/.agents/skills/nessus-export/nessus_html_report.py \
+  ~/nessus_GETS_PRD_168_vulnerabilities.nessus \
+  --label GETS_PRD_168
+```
+
+This produces two self-contained HTML files:
+
+| File | Description |
+|---|---|
+| `<LABEL>_by_host.html` | Vulnerabilities grouped by host, sorted by severity with collapsible detail panels |
+| `<LABEL>_by_plugin.html` | Vulnerabilities grouped by plugin/CVE, showing all affected hosts and ports |
+
+Features:
+- 🎨 Colour-coded severity (Critical/High/Medium/Low/Info)
+- 📋 Collapsible cards with Expand All / Collapse All
+- 🔗 Clickable CVE links to cve.org
+- 🗂 Sticky sidebar TOC for navigation
+- 🖨 Print-friendly layout
+- 🔁 Cross-linked (By Host ↔ By Plugin nav bar)
+
+> Note: Nessus Essentials free tier does not support built-in HTML reports.
+> This tool generates equivalent reports directly from the `.nessus` XML file.
+
 ## Notes
 
 - The `.nessus` file downloaded is the **unmodified** export from the Nessus portal — it can be re-imported into any Nessus instance

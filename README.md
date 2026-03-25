@@ -103,6 +103,31 @@ python3 ~/.agents/skills/nessus-export/nessus_export_tool.py \
 - The `.nessus` file is the unmodified export from the portal — re-importable into any Nessus instance
 - "UI count" = grouped vulnerability entries shown in the portal; "findings count" = total individual `ReportItem` entries in the XML
 
+## HTML Reports
+
+Generate standalone HTML reports from a `.nessus` file:
+
+```bash
+python3 ~/.agents/skills/nessus-export/nessus_html_report.py \
+  ~/nessus_GETS_PRD_168_vulnerabilities.nessus \
+  --label GETS_PRD_168
+```
+
+Produces:
+- `<LABEL>_by_host.html` — vulnerabilities grouped by host, sorted by severity
+- `<LABEL>_by_plugin.html` — vulnerabilities grouped by plugin/CVE with affected hosts
+
+### HTML Report Features
+- 🎨 Colour-coded severity rows (Critical → Info)
+- 📋 Collapsible cards — Expand/Collapse all
+- 🔗 Clickable CVE links to cve.org
+- 🗂 Sticky sidebar TOC
+- 🖨 Print-friendly
+- 🔁 Cross-linked (By Host ↔ By Plugin nav bar)
+
+> Nessus Essentials free tier does not support built-in HTML reports.
+> This generates equivalent reports directly from the `.nessus` XML.
+
 ## License
 
 MIT
